@@ -1,0 +1,60 @@
+---
+title: VPFX Docs
+description: Documentation for VPFX, an experimental external post-processing and shadow-pack platform for Minecraft Fabric.
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  title: VPFX Community Docs
+  tagline: An experimental external post-processing and shadow-pack platform for Minecraft Fabric.
+  actions:
+    - text: For Players
+      link: /player-testing-guide
+      icon: right-arrow
+      variant: primary
+    - text: For Pack Authors
+      link: /pack-author-quick-start
+      icon: right-arrow
+      variant: secondary
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Quick Links
+
+<CardGrid stagger>
+  <Card title="Community Quick Start" icon="open-book">
+    New to VPFX? Start here for an overview of the project and how to get involved.
+    [Read more →](/community-quick-start)
+  </Card>
+  <Card title="Pack Author Quick Start" icon="puzzle">
+    Create your first VPFX shaderpack with a minimal post-processing pass.
+    [Read more →](/pack-author-quick-start)
+  </Card>
+  <Card title="Pack Manifest Format" icon="seti:json">
+    Complete reference for the VPFX `pack.json` manifest format.
+    [Read more →](/pack-manifest-format)
+  </Card>
+  <Card title="shadow_depth Guide" icon="moon">
+    Understand VPFX shadow depth, how it works, and how to use it safely.
+    [Read more →](/shadow-depth-guide)
+  </Card>
+  <Card title="Common Errors & Troubleshooting" icon="warning">
+    Diagnose and fix common VPFX pack loading, validation, and shader issues.
+    [Read more →](/common-errors)
+  </Card>
+  <Card title="Pack Publishing Guide" icon="rocket">
+    How to package, version, document, and publish your VPFX shaderpack.
+    [Read more →](/publishing-guide)
+  </Card>
+</CardGrid>
+
+---
+
+## Important
+
+**VPFX packs are not OptiFine or Iris shaderpacks.** A VPFX pack has its own structure (`pack.json`, `post_effect/`, `shaders/`) and must be written specifically for the VPFX runtime.
+
+**VPFX is an experimental external post-processing and shadow-pack platform for Minecraft Fabric.** It provides a runtime where external VPFX shaderpacks can be loaded, tested, shared, and improved by the community.
+
+This site contains the official VPFX Community Documentation. Use the sidebar or search to find what you need.
