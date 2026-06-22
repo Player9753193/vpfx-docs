@@ -8,8 +8,8 @@ Built with [Astro](https://astro.build) + [Starlight](https://starlight.astro.bu
 
 ### Prerequisites
 
-- Node.js 18 or later
-- npm, included with Node.js
+- [Node.js](https://nodejs.org/) 18 or later
+- npm (comes with Node.js)
 
 ### Install Dependencies
 
@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-The dev server starts at `http://localhost:4321`.
+The dev server starts at `http://localhost:4321`. Changes to documentation files hot-reload automatically.
 
 ### Build
 
@@ -39,27 +39,26 @@ The build output goes to `dist/` as a static site.
 npm run preview
 ```
 
+Serves the built static site locally for testing before deployment.
+
 ## Project Structure
 
-```text
+```
 vpfx-docs-site/
 ├── package.json
-├── package-lock.json
-├── astro.config.mjs
+├── astro.config.mjs        # Astro + Starlight configuration
 ├── tsconfig.json
 ├── README.md
 ├── public/
-│   ├── icon.png          # Original PNG icon source
-│   └── favicon.png       # PNG favicon generated from icon.png
+│   └── favicon.svg
 └── src/
     ├── assets/
-    │   └── logo.png      # PNG navbar/site logo generated from icon.png
+    │   └── logo.svg
     ├── components/
-    │   └── PageTitle.astro
     ├── content/
-    │   ├── config.ts
+    │   ├── config.ts        # Content collections config
     │   └── docs/
-    │       ├── index.mdx
+    │       ├── index.mdx                # Homepage
     │       ├── community-quick-start.md
     │       ├── player-testing-guide.md
     │       ├── pack-author-quick-start.md
@@ -72,37 +71,9 @@ vpfx-docs-site/
     └── pages/
 ```
 
-## Icon Configuration
-
-This package uses the PNG icon rather than the placeholder SVG assets.
-
-Relevant configuration in `astro.config.mjs`:
-
-```js
-favicon: "/favicon.png",
-logo: {
-  src: "./src/assets/logo.png",
-  alt: "VPFX",
-  replacesTitle: true,
-},
-```
-
-The original uploaded icon is preserved as:
-
-```text
-public/icon.png
-```
-
-The generated derived assets are:
-
-```text
-public/favicon.png
-src/assets/logo.png
-```
-
 ## Adding New Documentation
 
-1. Create a new `.md` or `.mdx` file in `src/content/docs/`.
+1. Create a new `.md` file in `src/content/docs/`.
 2. Add frontmatter at the top:
 
 ```yaml
@@ -117,9 +88,55 @@ description: A short description for SEO and search.
 
 ## Deployment
 
-This site produces a static build and can be deployed to Vercel, Cloudflare Pages, GitHub Pages, or any static host.
+This site produces a static build. It can be deployed to:
 
-### Cloudflare Pages / Vercel
+### Vercel
+
+1. Import the repository into Vercel.
+2. Framework preset: **Astro** (auto-detected).
+3. Build command: `npm run build`
+4. Output directory: `dist`
+
+### Cloudflare Pages
+
+1. Connect the repository in Cloudflare Pages.
+2. Build command: `npm run build`
+3. Build output directory: `dist`
+
+### GitHub Pages
+
+Use the [Astro GitHub Pages deployment guide](https://docs.astro.build/en/guides/deploy/github/) or the `@astrojs/starlight` deployment docs.
+
+## Features
+
+- Full-text search (Pagefind, built into Starlight)
+- Syntax highlighting for JSON, GLSL, Java, Bash, Markdown, and more
+- Fixed sidebar navigation with active page highlighting
+- Auto-generated table of contents from headings
+- Previous/Next page navigation
+- Dark/light mode
+- Mobile-responsive
+- SEO with Open Graph tags
+- Fully static output (no database, no backend)
+
+## License
+
+Documentation content is maintained by the VPFX community. See individual document frontmatter for details.
+
+## Clean Package Notes
+
+This clean package intentionally does **not** include `node_modules/`, `dist/`, `.astro/`, `__MACOSX/`, or `.DS_Store` files.
+
+Recommended deployment root is this directory, where `package.json` is located.
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
+
+For Cloudflare Pages / Vercel:
 
 ```text
 Framework preset: Astro
@@ -128,17 +145,13 @@ Output directory: dist
 Root directory: repository root / this folder
 ```
 
-## Clean Package Notes
 
-This package intentionally does **not** include:
+## Cloudflare Pages
 
-```text
-node_modules/
-dist/
-.astro/
-__MACOSX/
-.DS_Store
-```
+Build command: `npm run build`
 
-`package-lock.json` is included so deployments install the same dependency tree that worked locally.
-# vpfx-docs
+Build output directory: `dist`
+
+Recommended environment variable: `NODE_VERSION=22`
+
+This package pins `@astrojs/sitemap` to `3.1.6` for compatibility with the current Astro 4 + Starlight 0.28 stack.

@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
-  site: "https://vpfx.dev",
+  site: "https://vpfx-docs.pages.dev",
   base: "/",
   integrations: [
     starlight({
@@ -26,7 +26,7 @@ export default defineConfig({
         replacesTitle: true,
       },
       social: {
-        github: "https://github.com/VulkanPostFX",
+        github: "https://github.com/Player9753193/vpfx-docs",
       },
       sidebar: [
         {
@@ -89,7 +89,7 @@ export default defineConfig({
       pagination: true,
       lastUpdated: true,
       editLink: {
-        baseUrl: "https://github.com/VulkanPostFX/vpfx-docs/edit/main/",
+        baseUrl: "https://github.com/Player9753193/vpfx-docs/edit/main/",
       },
       expressiveCode: {
         themes: ["github-dark", "github-light"],
@@ -101,13 +101,6 @@ export default defineConfig({
         },
       },
       head: [
-        {
-          tag: "link",
-          attrs: {
-            rel: "apple-touch-icon",
-            href: "/icon.png",
-          },
-        },
         {
           tag: "meta",
           attrs: {
